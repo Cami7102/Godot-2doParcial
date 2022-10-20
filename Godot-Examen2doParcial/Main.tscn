@@ -1,0 +1,125 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/todo.png" type="Texture" id=1]
+[ext_resource path="res://scenes/characters/Obstaculos.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/characters/Dino.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ParallaxBackground.gd" type="Script" id=4]
+[ext_resource path="res://Main.gd" type="Script" id=5]
+[ext_resource path="res://fonts/poco/Poco.tres" type="DynamicFont" id=6]
+[ext_resource path="res://scenes/characters/Volador.tscn" type="PackedScene" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 522.75, 10 )
+
+[node name="Main" type="Node2D"]
+position = Vector2( 0, 143 )
+script = ExtResource( 5 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource( 4 )
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground"]
+margin_left = -2.0
+margin_top = 163.0
+margin_right = 1039.0
+margin_bottom = 464.0
+
+[node name="Nubes" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1024, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/Nubes"]
+position = Vector2( 189, 202.75 )
+scale = Vector2( 0.785714, 0.833333 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 174, 2, 84, 27 )
+
+[node name="Sprite2" type="Sprite" parent="ParallaxBackground/Nubes"]
+position = Vector2( 404, 223.75 )
+scale = Vector2( 0.702381, 0.759259 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 174, 2, 84, 27 )
+
+[node name="Sprite3" type="Sprite" parent="ParallaxBackground/Nubes"]
+position = Vector2( 841, 191.75 )
+scale = Vector2( 0.761905, 0.796296 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 174, 2, 84, 27 )
+
+[node name="Camino" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1200, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/Camino"]
+position = Vector2( 608, 434 )
+scale = Vector2( 0.507917, 1 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 2, 104, 2400, 24 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 521, 300 )
+shape = SubResource( 1 )
+
+[node name="Dino" parent="." instance=ExtResource( 3 )]
+position = Vector2( -81, -112 )
+
+[node name="Obstaculos" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1048, 242 )
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Reiniciar" type="Sprite" parent="."]
+visible = false
+position = Vector2( 481, 154 )
+scale = Vector2( 0.416667, 0.46875 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 2, 2, 72, 64 )
+
+[node name="Control" type="Control" parent="Reiniciar"]
+margin_left = -41.0
+margin_top = -30.0
+margin_right = 39.0
+margin_bottom = 34.0
+
+[node name="Label" type="Label" parent="."]
+visible = false
+margin_left = 505.0
+margin_top = 138.0
+margin_right = 689.0
+margin_bottom = 170.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "GAME OVER"
+
+[node name="Control" type="Control" parent="Label"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Volador" parent="." groups=["vol"] instance=ExtResource( 7 )]
+position = Vector2( 702, 0 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+margin_left = 916.0
+margin_top = 234.0
+margin_right = 980.0
+margin_bottom = 266.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.436436, 0.268224, 0.817444, 1 )
+custom_colors/font_color_shadow = Color( 0.517647, 0.14902, 0.8, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "00000"
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="gui_input" from="Reiniciar/Control" to="." method="_on_Control_gui_input"]
+[connection signal="gui_input" from="Label/Control" to="." method="_on_Control_gui_input"]
