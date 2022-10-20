@@ -12,4 +12,4 @@ Al final encontrará un ejecutable del juego en el cual usted presiona en el bot
 En caso de chocar con un arbolito :cactus: pierde el juego y le aparecera el texto de *GAME OVER* y el símbolo para volver a empezar ![restart](https://user-images.githubusercontent.com/80707476/197022542-e4833d07-e8bd-4d61-991b-606f2ffae431.png) 
 
 EJECUTABLE DEL JUEGO:
-
+https://drive.google.com/file/d/18E8OQD8ycCWIBAzJ_F9-e1FXNilY2JOP/view?usp=sharing
