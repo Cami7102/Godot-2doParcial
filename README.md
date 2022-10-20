@@ -13,3 +13,6 @@ En caso de chocar con un arbolito :cactus: pierde el juego y le aparecera el tex
 
 EJECUTABLE DEL JUEGO:
 https://drive.google.com/file/d/18E8OQD8ycCWIBAzJ_F9-e1FXNilY2JOP/view?usp=sharing
+
+En el caso de que el archivo .exe no funcione se recomienda descargar GODOT version 3.5 y clonar el proyecto de este repositorio, al terminar presionar en el botón siguiente ![ejecutable](https://user-images.githubusercontent.com/80707476/197037699-11769b67-738e-4e29-a3b2-c00bb876a470.png) que se encuentra en la parte superior derecha de la pantalla principal de GODOT.
+(Este para poder ejecutar el juego)
